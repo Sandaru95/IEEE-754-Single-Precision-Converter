@@ -3,21 +3,9 @@ def firstDigitZero(string1):
 def makeIt8Bit(string1):
     return string1.zfill(8)
 def convert_to_binary_pos(decimal): # F(x) --> Convert Decimal To Binary (Non-Fractional Part)
-    binary_string = ''# Placeholders
-    while decimal != 0:
-        if decimal % 2 == 0:
-            binary_string += '0'
-            decimal = decimal / 2
-        else:
-            binary_string += '1'
-            decimal = (decimal - 1) / 2
-    if len(binary_string) == 0:
-        binary_string = '0'
-    return binary_string[::-1]
+    return bin(int(decimal)).replace("0b", "")
 def convert_to_binary_neg(decimal): # F(x) --> Convert Decimal To Binary (Fractional Part)
-    # Placeholders
-    binary_string = ''
-    i = 0
+    binary_string, i = '', 0
     while i != 40:
         if not firstDigitZero(str(decimal * 2)):
             binary_string += str(decimal * 2)[0]
@@ -27,37 +15,22 @@ def convert_to_binary_neg(decimal): # F(x) --> Convert Decimal To Binary (Fracti
             decimal = float(decimal * 2)
         i += 1
     return binary_string
-""" !========================================================== The Programme Starts Here !==========================================================>""" 
 print("IEEE 754 Converter. 22/03/02. Author: Sandaru Rasanjana\n")
 while True:
     user_input = input("Enter number to convert to IEEE:").strip()
-    # ERROR CHECKING GETTING A VALID NUMBER TO CONVERT
-    if user_input != "q":
-        try:
-            float(user_input)
-        except:
-            print("Please Enter a Valid Number")
-            break
-        finally: 
-            pass
-    elif float(user_input) == 0:
+    if float(user_input) == 0:
         print("Enter a number Not equal 0")
     else:
-        # Error Checking Finished
         theres_dot = '.' in user_input
-        # Getting the Sign Binary
         input_is_positive = float(user_input) >= 0
         sign_binary = '0'
         if not input_is_positive:
             sign_binary = '1'
         user_input = str(abs(float(user_input)))
-        # Splitting By Dot If EXIST
         if theres_dot:
             index_of_dot = user_input.index('.')
         if theres_dot:
-            # Splitting the Input into 2 BY DOT
             user_input_split = [user_input[0:index_of_dot], ("."+user_input[index_of_dot + 1:])]
-            # Calculating the binary number
             binary_number = f"{convert_to_binary_pos(float(user_input_split[0]))}.{convert_to_binary_neg(float(user_input_split[1]))}"
             binary_number_without_dot = binary_number.replace(".", "") # =================================== Getting the index of the DOT
             position_of_dot = str(binary_number).index(".") # ============================================== Getting the 2's Exponent
