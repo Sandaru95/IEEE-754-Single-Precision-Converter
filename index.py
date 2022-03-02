@@ -1,8 +1,5 @@
 def firstDigitZero(string1): # F(x) --> if the first digit is Zero
-    returnVal = True
-    if string1[0] != '0':
-        returnVal = False
-    return returnVal
+    return (True if string1[0] == '0' else False)
 def makeIt8Bit(string1): # F(x) --> Given String returns with length 0 (adding 0s in front)
     missingBits = 8 - len(string1)
     for i in range(0, missingBits):
