@@ -18,14 +18,10 @@ while True:
         print("Enter a number Not equal 0")
     else:
         theres_dot = '.' in user_input
-        input_is_positive = float(user_input) >= 0
-        sign_binary = '0'
-        if not input_is_positive:
-            sign_binary = '1'
+        sign_binary = '1' if not (float(user_input) >= 0) else '0'
         user_input = str(abs(float(user_input)))
         if theres_dot:
             index_of_dot = user_input.index('.')
-        if theres_dot:
             user_input_split = [user_input[0:index_of_dot], ("."+user_input[index_of_dot + 1:])]
             binary_number = f"{bin(int(int(user_input_split[0]))).replace('0b', '')}.{convert_to_binary_neg(float(user_input_split[1]))}"
             binary_number_without_dot = binary_number.replace(".", "") # =================================== Getting the index of the DOT
@@ -40,9 +36,9 @@ while True:
                 power_of_2 = -(((pos_first_valued - position_of_dot)+2))
             print(f"{sign_binary}.{(bin((127+power_of_2)).replace('0b', '')).zfill(8)}.{binary_number_without_dot[1:24]}")
         else:
-            binary_number = bin(float(str(user_input))).replace("0b", "")
+            binary_number = bin(int(float(str(user_input)))).replace("0b", "")
             exp_of_2 = len(binary_number) - 1
             mantissa = binary_number[1:] # Mantissa Normalization
             if len(mantissa) < 25:
-                mantissa = "{:<08s}".format(mantissa)
+                mantissa = "{:<023s}".format(mantissa)
             print(f"IEEE 754: {sign_binary}.{(bin(int(127+exp_of_2)).replace('0b', '')).zfill(8)}.{mantissa[:23]}")
