@@ -11,9 +11,8 @@ def convert_to_binary_neg(decimal): # F(x) --> Convert Decimal To Binary (Fracti
             decimal = float(decimal * 2)
         i += 1
     return binary_string
-print("IEEE 754 Converter. 22/03/02. Author: Sandaru Rasanjana\n")
 while True:
-    user_input = input("Enter number to convert to IEEE:").strip()
+    print("IEEE 754 Converter. 22/03/02. Author: Sandaru Rasanjana\n");user_input = input("Enter number to convert to IEEE:").strip()
     if float(user_input) == 0:
         print("Enter a number Not equal 0")
     else:
