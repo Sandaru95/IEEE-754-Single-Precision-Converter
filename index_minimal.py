@@ -22,7 +22,7 @@ while True:
             index_of_dot = ui.index('.')
             ui_split = ([ui[0:index_of_dot], ("."+ui[index_of_dot + 1:])])
             binary_number = (f"{bin(int(int(ui_split[0]))).replace('0b', '')}.{con_to_bin_fra(float(ui_split[1]))}")
-            bin_num_wd = binary_number.replace(".", "")
+            bin_num_wd = binary_number.replace(".", "").lstrip("0")
             position_of_dot, split_by_dot_0, split_by_dot_1 = str(binary_number).index("."), binary_number.split('.')[0], binary_number.split('.')[1]
             if '1' in split_by_dot_0:
                 power_of_2 = (position_of_dot - (split_by_dot_0.index('1') + 1))
