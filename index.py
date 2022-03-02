@@ -29,7 +29,6 @@ def convert_to_binary_neg(decimal): # F(x) --> Convert Decimal To Binary (Fracti
     while i != 40:
         if not firstDigitZero(str(decimal * 2)):
             binary_string += str(decimal * 2)[0]
-            print(str(decimal*2)[1:])
             decimal = float(str(decimal * 2)[1:])
         else:
             binary_string += '0'
